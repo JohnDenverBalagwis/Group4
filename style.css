@@ -6,16 +6,46 @@
   font-family: GloomyFont;
   src: url(./Font/Gloomy-Things.ttf);
 }
-
-@keyframes blinker {
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
   50% {
-    opacity: 0;
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
   }
 }
 
 :root {
   --light-red: #75292e;
   --red: #e00a0b;
+  --maroon: #800000;
   --orange: #f55d3a;
   --white: #ffffff;
   --blackish: #181818;
@@ -76,6 +106,7 @@ ol[class] {
   text-align: center;
   line-height: 75px;
   padding: 10px 0px 10px;
+  cursor: pointer;
 }
 
 .header .logo span {
@@ -131,13 +162,7 @@ ol[class] {
 .header .navbar ul li a.btn--signin:hover {
   background-color: var(--red);
   color: var(--white);
-  border: 1px solid var(--red);
-}
-
-figure {
-  position: absolute;
-  animation: blinker 2s linear infinite;
-  background: var(--darkgrey);
+  border: 1px solid var(--white);
 }
 
 .text__box {
@@ -156,6 +181,10 @@ figure {
   font-family: var(--font-Creepster);
   font-size: 100px;
   line-height: 117px;
+}
+.text__box .main__title:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
 }
 
 .text__box .paragraph {
@@ -222,7 +251,6 @@ figure {
   letter-spacing: 0.1em;
   padding: 40px 0 0 0;
   color: var(--white);
-
   text-shadow: 0px 0px 25px #e00a0b, 0px 0px 25px #e00a0b, 0px 0px 25px #e00a0b;
 }
 
@@ -264,6 +292,10 @@ figure {
   height: 584px;
   display: block;
 }
+.card-item__img:hover {
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
 
 .card-body {
   width: 270px;
@@ -302,36 +334,36 @@ figure {
 footer {
   position: absolute;
   background-color: var(--black);
-  height: 400px;
+  height: 390px;
   width: 1440px;
   text-align: center;
   padding-top: 50px;
   background-color: var(--blackish);
 }
 
-.social {
+.social-media {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
 }
-.social li {
-  list-style: none;
-  margin: 0 5px;
+
+.facebook,
+.twitter,
+.telegram,
+.youtube {
+  width: 40px;
+  margin: 40px 30px;
+  cursor: pointer;
+  transition: scale;
 }
-.social li a {
-  display: inline-block;
-  margin: 10px 10px;
-  color: var(--white);
-  transform: scale(0.6);
-  filter: invert(100%);
-}
+
 .email {
+  font-family: var(--font-Poppins);
   border: 1px solid var(--white);
   border-radius: 5px;
   padding: 1rem 6rem;
   margin: 2rem;
-  text-align: center;
   background-color: var(--white);
 }
 .btn--creepUs {
@@ -341,7 +373,7 @@ footer {
   padding: 1rem 3rem;
   border-radius: 5px;
   text-decoration: none;
-  font-family: var(--font-Chicle);
+  font-family: var(--font-Poppins);
   font-size: 1.5rem;
 }
 .btn--creepUs:hover {
@@ -358,7 +390,7 @@ footer {
 }
 .footer__list li {
   list-style: none;
-  margin: 40px 50px;
+  margin: 30px 50px;
 }
 .footer__list li a {
   color: var(--white);
@@ -367,7 +399,10 @@ footer {
   font-size: 1.5rem;
   text-transform: uppercase;
 }
-.footer__text {
+.footer__list li a:hover {
+  color: var(--red);
+}
+.footer__copyright {
   font-family: var(--font-Chicle);
   font-style: normal;
   font-weight: 400;
@@ -376,5 +411,27 @@ footer {
   text-align: center;
   letter-spacing: 0.1em;
   color: var(--grey);
-  margin-top: 30px;
+  /* margin-top: 30px; */
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--blackish) var(--white);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--white);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--blackish);
+  border-radius: 10px;
+  border: 3px solid var(--white);
 }
