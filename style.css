@@ -195,6 +195,7 @@ figure {
   text-align: center;
   background-color: var(--blackish);
   padding-bottom: 40px;
+  padding-top: 40px;
 }
 
 .aespa-img {
